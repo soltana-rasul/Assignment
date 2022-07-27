@@ -2,59 +2,81 @@ package Assn7;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class Q2 implements Comparable<Q2> {
+public class Q2 {
 
-    private int id;
-    private String name;
-    private int age;
-    private long salary;
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public long getSalary() {
-        return salary;
-    }
-
-    public Q2(int id, String name, int age, int salary) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.salary = salary;
-    }
-
-    @Override
-    public int compareTo(Q2 emp) {
-        //let's sort the employee based on an id in ascending order
-        //returns a negative integer, zero, or a positive integer as this employee id
-        //is less than, equal to, or greater than the specified object.
-        return (this.id - emp.id);
-    }
-
-    @Override
-    //this is required to print the user-friendly information about the Employee
-    public String toString() {
-        return "[id=" + this.id + ", name=" + this.name + ", age=" + this.age + ", salary=" +
-                this.salary + "]";
-    }
-
-	@Override
-	public int compareTo(Q2 o) {
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		return 0;
+		
+		Students s1 = new Students("Justin", "Boy", 22, 87);
+		Students s2 = new Students("Christina", "Girl", 25, 93);
+		Students s3 = new Students("Marvin", "Boy",29, 78);
+
+		List<Students> stu = new ArrayList<>();
+		
+		stu.add(s1);
+		stu.add(s2);
+		stu.add(s3);
+		
+		Collections.sort(stu, new Comparator());
+		for(Students s : stu) {
+			System.out.println(s.getId() + " " + s.getName() + " " + s.getGender + " " + s.getGrade());
+		}
+
 	}
 
+}
+
+class Students implements Comparable<Students> {
+	
+
+	public Students(String string, String string2, int i, int j) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getGrade() {
+		return grade;
+	}
+
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+
+	private String name;
+	private String gender;
+	private int id;
+	private int grade;
+	
+	@Override	
+	public int compareTo(Students s) {
+		return this.name.compareTo(s.getName());
+	}
 }
